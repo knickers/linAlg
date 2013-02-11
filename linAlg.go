@@ -8,16 +8,16 @@ type Point struct {
 	X, Y, Z float64
 }
 
-func (p *Point) Add(q Point) Vector {
-	return Vector{
+func (p *Point) Add(q Point) Point {
+	return Point{
 		X: p.X + q.X,
 		Y: p.Y + q.Y,
 		Z: p.Z + q.Z,
 	}
 }
 
-func (p *Point) Sub(q Point) Vector {
-	return Vector{
+func (p *Point) Sub(q Point) Point {
+	return Point{
 		X: p.X - q.X,
 		Y: p.Y - q.Y,
 		Z: p.Z - q.Z,
@@ -35,6 +35,7 @@ func (v *Vector) Length() float64 {
 	return math.Sqrt(l)
 }
 
+// Return this vector of length 1
 func (v *Vector) Unit() Vector {
 	l := v.Length()
 	return Vector{
@@ -44,6 +45,7 @@ func (v *Vector) Unit() Vector {
 	}
 }
 
+// The dot product of two vectors
 func (v *Vector) Dot(w Vector) float64 {
 	d := v.X * w.X
 	d += v.Y * w.Y
@@ -51,6 +53,7 @@ func (v *Vector) Dot(w Vector) float64 {
 	return d
 }
 
+// The cross product of two vectors
 func (v *Vector) Cross(w Vector) Vector {
 	return Vector{
 		X: v.Y*w.Z - v.Z*w.Y,
@@ -75,6 +78,13 @@ func (v *Vector) Sub(w Vector) Vector {
 	}
 }
 
+// Return the vector that results from rotating this vector, radians amount,
+// about axis.
+func (v *Vector) Rotate(radians float64, axis Vector) Vector {
+	return *v
+}
+
+// The accute angle between two vectors.
 func (v *Vector) Angle(w Vector) float64 {
 	return math.Acos(v.Dot(w) / v.Length() / w.Length())
 }

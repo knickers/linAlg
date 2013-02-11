@@ -8,8 +8,8 @@ import (
 // cp, and p2. Follows the 'right hand rule' of:
 // vector(p1 - cp) cross vector(p2 - cp)
 func FindTriangleNormal(p1, cp, p2 Point) Vector {
-	v := p1.Sub(cp)
-	w := p2.Sub(cp)
+	v := Vector(p1.Sub(cp))
+	w := Vector(p2.Sub(cp))
 	n := v.Cross(w)
 	return n.Unit()
 }
