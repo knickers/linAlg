@@ -62,6 +62,8 @@ func (v *Vector) Cross(w Vector) Vector {
 	}
 }
 
+// Add vector v to vector w. The resulting vector's tail is the tail of v and
+// its head the head of w
 func (v *Vector) Add(w Vector) Vector {
 	return Vector{
 		X: v.X + w.X,
@@ -70,6 +72,8 @@ func (v *Vector) Add(w Vector) Vector {
 	}
 }
 
+// Subtract vector w from vector v. The resulting vector's tail is the tail of v
+// and its head is the negative head of w
 func (v *Vector) Sub(w Vector) Vector {
 	return Vector{
 		X: v.X - w.X,
